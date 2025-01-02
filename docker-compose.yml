@@ -1,13 +1,30 @@
 #Laravel
 services:
+  app:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - '5173:5173'
+    volumes:
+    - ./frontend:/var/www:rw
+    - /var/www/node_modules
+    depends_on:
+      - backend
+    restart: unless-stopped
+    command: npm run dev -- --host
+    networks:
+      - laravel
+      
   backend:
     build:
-      context: ./
+      context: ./backend
       dockerfile: Dockerfile
     restart: unless-stopped
     working_dir: /var/www/
     volumes:
-      - ./:/var/www:rw
+      - ./backend:/var/www:rw
     container_name: backend
     networks:
       - laravel
@@ -21,8 +38,8 @@ services:
     depends_on:
       - backend
     volumes:
-      - ./:/var/www
-      - ./docker/nginx/:/etc/nginx/conf.d/
+      - ./backend:/var/www
+      - ./backend/docker/nginx/:/etc/nginx/conf.d/
     container_name: nginx
     networks:
       - laravel
@@ -38,7 +55,7 @@ services:
           MYSQL_PASSWORD: ${DB_PASSWORD:-userpass}
           MYSQL_USER: ${DB_USERNAME:-username}
       volumes:
-          - ./.docker/mysql/dbdata:/var/lib/mysql
+          - ./backend/.docker/mysql/dbdata:/var/lib/mysql
       container_name: mysql
       ports:
           - "3306:3306"
@@ -50,6 +67,7 @@ services:
       networks:
           - laravel
       container_name: redis
+      restart: unless-stopped
       ports:
           - "6379:6379"
 
