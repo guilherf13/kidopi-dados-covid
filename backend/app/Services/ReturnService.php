@@ -4,7 +4,7 @@ namespace App\Services;
 
 class ReturnService
 {
-    //Padrão de retorno adotado para os dados dos srviços.
+    //Padrão de retorno adotado para os dados dos seviços.
     //data: Dados retornados
     //status: Status da requisição
     //mensage: Mensagem de retorno
