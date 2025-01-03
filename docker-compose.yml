@@ -26,6 +26,9 @@ services:
     volumes:
       - ./backend:/var/www:rw
     container_name: backend
+    depends_on:
+      - mysql
+      - redis
     networks:
       - laravel
 
