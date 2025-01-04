@@ -2,46 +2,53 @@
 
 namespace App\Services;
 
+use App\Enums\Country;
 use App\Http\Requests\FilterDataCountryRequest;
 use Illuminate\Support\Facades\Http;
-use App\Services\ReturnService;
 
 class CovidDataService
 {
-    private ReturnService $returnService;
-
-    function __construct(ReturnService $returnService)
-    {
-        $this->returnService = $returnService;
-    }
-
     //Filtra os dados de acordo com o país
-    public function filterDataCountry(FilterDataCountryRequest $request):Array
+    public function filterDataCountry(FilterDataCountryRequest $request):array
     {
-        $countrys = ["Brazil", "Canada", "Australia"];
-
         try {
-            $url = 'https://dev.kidopilabs.com.br/exercicio/covid.php?pais=';
+            $baseUrl = env("Base_URL");
             $queryParams = $request->input('country');
 
-            if(!in_array($queryParams, $countrys)){
-                
-                return $this->returnService->respondNotFound($queryParams);
+            if(!Country::isValid($queryParams)){
+                return $this->sendError('Invalid country', []);
+            }
+            
+            $completeQuery = $baseUrl . '?pais=' . $queryParams;
+            $response = Http::get($completeQuery);
+
+            if($response->ok()){
+                return $this->sendSucess('Data found successfully', $response->json());
             }
 
-            $response = Http::get($url . $queryParams);
-                
-            if($response->ok() && !empty($response->json())){
-                return $this->returnService->respondSuccess($response->json());
-            }
-
-            if(empty($response->json()) || !$response->ok()){
-                return $this->returnService->respondNoContent();
-            }
+            return $this->sendError('Data not found', $response->json());
 
         } catch (\Throwable $th) {
-            return $this->returnService->respondError($th);
+            return $this->sendError($th->getMessage());
         }
        
+    }
+
+    public function sendError(string $mensage = '', array $data = []):array 
+    {
+        return [
+            'status' => 'error',
+            'message' => $mensage,
+            'data' => $data
+        ];
+    }
+
+    public function sendSucess(string $mensage = '', array $data = []):array 
+    {
+        return [
+            'status' => 'sucess',
+            'message' => $mensage,
+            'data' => $data
+        ];
     }
 }

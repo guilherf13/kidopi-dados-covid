@@ -34,7 +34,7 @@ class FilterDataCountryRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'country.required' => 'O campo país é obrigatório.',
+            'country.required' => 'O campo country é obrigatório.',
         ];
     }
 }

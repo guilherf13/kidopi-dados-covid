@@ -9,15 +9,18 @@ use Illuminate\Http\JsonResponse;
 
 class CovidDataController extends Controller
 {
-    private CovidDataService $covidDataService;
-
-    public function __construct(CovidDataService $covidDataService)
+    public function __construct(private CovidDataService $covidDataService)
     {
-        $this->covidDataService = $covidDataService;
     }
     
     public function filterDataCountry(FilterDataCountryRequest $request): JsonResponse
     {
-        return response()->json($this->covidDataService->filterDataCountry($request));
+        $data = $this->covidDataService->filterDataCountry($request);
+
+        if($data['status'] === 'error'){
+            return $this->sendError($data);
+        }
+
+        return $this->sendSucess($data);
     }
 }
