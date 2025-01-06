@@ -74,7 +74,11 @@ class CovidDataService
         }
     }
 
-    //Aqui eu criei um padrão de retorno para o controller
+    /*  
+        Padrão de retorno para o controller, 
+        formatando respostas de erro e sucesso 
+        com status, mensagem e dados em formato array.
+    */
     public function sendError(string $mensage = '', array $data = []):array 
     {
         Log::error($mensage);

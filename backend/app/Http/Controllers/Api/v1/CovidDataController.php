@@ -35,6 +35,11 @@ class CovidDataController extends Controller
     {
         $queryParams = $request->input('country');
         $data = $this->covidDataService->covidCountry($queryParams);
+        
+        if($data['status'] === 'error'){
+            return $this->sendError($data);
+        }
+        
         return $this->sendSucess($data);
     }
 }
