@@ -1,0 +1,69 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f9;
+  }
+  
+  .container {
+    width: 90%; /* Aumentar o tamanho da largura do container */
+    max-width: 1000px; /* Ajustando a largura máxima */
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 80vh; /* Limitar a altura do container */
+    overflow: auto; /* Permite rolagem interna caso o conteúdo ultrapasse */
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  canvas {
+    display: block;
+    margin: 0 auto;
+    width: 100%; /* Fazer o canvas ocupar 100% da largura do container */
+    height: 500px; /* Ajustando a altura do gráfico */
+  }
+  
+  .loading {
+    text-align: center;
+    font-size: 20px;
+    color: #333;
+  }
+  
+  footer {
+    margin-top: 20px;
+    padding: 10px;
+    width: 53%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+  }
+
+  /* Estilo do select (botão de escolher o país) */
+select {
+  width: 200px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  font-size: 16px;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+/* Estilo do select ao focar */
+select:focus {
+  border-color: #007bff; /* Cor de borda ao focar */
+  background-color: #e9f7ff; /* Cor de fundo ao focar */
+  outline: none; /* Remove o contorno padrão do foco */
+}
+  

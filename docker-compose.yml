@@ -1,28 +1,10 @@
 #Laravel
 services:
-  app:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    container_name: frontend
-    ports:
-      - '5173:5173'
-    volumes:
-    - ./frontend:/var/www:rw
-    - /var/www/node_modules
-    depends_on:
-      - backend
-    restart: unless-stopped
-    command: npm run dev -- --host
-    networks:
-      - laravel
-      
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
     restart: unless-stopped
-    working_dir: /var/www/
     volumes:
       - ./backend:/var/www:rw
     container_name: backend
@@ -57,6 +39,7 @@ services:
           MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
           MYSQL_PASSWORD: ${DB_PASSWORD:-userpass}
           MYSQL_USER: ${DB_USERNAME:-username}
+          TZ: "America/Sao_Paulo"
       volumes:
           - ./backend/.docker/mysql/dbdata:/var/lib/mysql
       container_name: mysql
