@@ -7,15 +7,15 @@ O projeto esta divido em camadas.
 
 Controllers, Validações, Services, Models, e por ultimo a base de dados Mysql.
 
-![alt text](image.png)
+![alt text](imagens/image.png)
 
 ### Area de relatorio
 
-![alt text](<Screenshot from 2025-01-06 20-38-45.png>)
+![alt text](<imagens/Screenshot from 2025-01-06 20-38-45.png>)
 
 ### Area de comparação entre Paises. 
 
-![alt text](<Screenshot from 2025-01-06 20-40-47-1.png>)
+![alt text](<imagens/Screenshot from 2025-01-06 20-40-47-1.png>)
 
 ## 🚀 Começando
 
@@ -62,7 +62,7 @@ cp .env.example .env
 ```
 Subistitua essa configuração pela que esta no seu .env
 
-![alt text](image-1.png)
+![alt text](imagens/image-1.png)
 
 ```
 Base_URL=https://dev.kidopilabs.com.br/exercicio/covid.php
