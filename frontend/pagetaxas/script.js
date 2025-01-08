@@ -86,8 +86,8 @@ async function compararTaxas() {
 
   // Exibir o resultado
   document.getElementById('result').innerHTML = `
-    <p><strong>Taxa de Morte de ${country1}:</strong> ${taxaMortePais1.toFixed(2)}%</p>
-    <p><strong>Taxa de Morte de ${country2}:</strong> ${taxaMortePais2.toFixed(2)}%</p>
+    <p><strong>Taxa de Mortalidade ${country1}:</strong> ${taxaMortePais1.toFixed(2)}%</p>
+    <p><strong>Taxa de Mortalidade ${country2}:</strong> ${taxaMortePais2.toFixed(2)}%</p>
     <p><strong>Diferença:</strong> ${diferencaTaxa.toFixed(2)}%</p>
   `;
 }
