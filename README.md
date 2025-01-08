@@ -15,7 +15,7 @@ Controllers, Validações, Services, Models, e por ultimo a base de dados Mysql.
 
 ### Area de comparação entre Paises. 
 
-![alt text](<imagens/Screenshot from 2025-01-06 20-40-47-1.png>)
+![alt text](imagens/imageT.png)
 
 ## 🚀 Começando
 

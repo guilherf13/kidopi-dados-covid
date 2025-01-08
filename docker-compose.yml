@@ -10,7 +10,7 @@ services:
     container_name: backend
     depends_on:
       - mysql
-      - redis
+      # - redis
     networks:
       - laravel
 
@@ -48,14 +48,14 @@ services:
       networks:
           - laravel
   # redis
-  redis:
-      image: redis:latest
-      networks:
-          - laravel
-      container_name: redis
-      restart: unless-stopped
-      ports:
-          - "6379:6379"
+  # redis:
+  #     image: redis:latest
+  #     networks:
+  #         - laravel
+  #     container_name: redis
+  #     restart: unless-stopped
+  #     ports:
+  #         - "6379:6379"
 
   # queue:
   #     build:
