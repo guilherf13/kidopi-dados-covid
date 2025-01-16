@@ -109,7 +109,7 @@ O frontend esta ultilizando o servidor http-server do node.
 Para executalo basta rodar o comando:
 
 ```
-http-server -p 8080 --cors="http://127.0.0.1:8080"
+npx http-server -p 8080 --cors="http://127.0.0.1:8080"
 ```
 Para acessar as paginas, são duas rotas:
 

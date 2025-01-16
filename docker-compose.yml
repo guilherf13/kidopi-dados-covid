@@ -47,31 +47,6 @@ services:
           - "3306:3306"
       networks:
           - laravel
-  # redis
-  # redis:
-  #     image: redis:latest
-  #     networks:
-  #         - laravel
-  #     container_name: redis
-  #     restart: unless-stopped
-  #     ports:
-  #         - "6379:6379"
-
-  # queue:
-  #     build:
-  #         context: ./
-  #         dockerfile: Dockerfile
-  #     command: php artisan queue:work
-  #     restart: unless-stopped
-  #     working_dir: /var/www
-  #     volumes:
-  #         - ./:/var/www:rw
-  #     container_name: queue
-  #     depends_on:
-  #         - redis
-  #         - backend
-  #     networks:
-  #         - laravel
 
 networks:
   laravel:
