@@ -125,6 +125,7 @@ async function fetchAcessData() {
     const data = await response.json();
 
     const lastAccess = data.data.data;
+
     lastAccessDate = lastAccess.date;
     lastAccessCountry = lastAccess.country;
 
