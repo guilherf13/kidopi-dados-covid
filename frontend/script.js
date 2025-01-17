@@ -16,7 +16,7 @@ function atualizarValor() {
 // Função para buscar os dados da API de Covid
 async function fetchData(pais) {
   try {
-    const url = 'http://localhost:80/api/v1/covid-data?country=' + pais;
+    const url = 'http://146.190.145.157:80/api/v1/covid-data?country=' + pais;
     const response = await fetch(url);
     const data = await response.json();
     const estados = data.data.data;
@@ -120,7 +120,7 @@ function renderChart(labels, confirmados, mortos, pais) {
 // Função para buscar os dados de acesso
 async function fetchAcessData() {
   try {
-    const url = 'http://localhost:80/api/v1/acess-data';
+    const url = 'http://146.190.145.157:80/api/v1/acess-data';
     const response = await fetch(url);
     const data = await response.json();
 

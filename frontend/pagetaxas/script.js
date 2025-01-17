@@ -38,7 +38,7 @@ async function compararTaxas() {
 
   async function buscarDadosPais(country) {
     try {
-      const response = await fetch(`http://localhost:80/api/v1/covid-country?country=${country}`);
+      const response = await fetch(`http://146.190.145.157:80/api/v1/covid-country?country=${country}`);
    
       if (!response.ok) {
         alert(`Erro ao buscar dados para o país: ${country}`);
