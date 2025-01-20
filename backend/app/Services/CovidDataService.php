@@ -20,15 +20,15 @@ class CovidDataService
     public function filterDataCountry(FilterDataCountryRequest $request):array
     {
         try {
-            $baseUrl = env("Base_URL");
             $queryParams = $request->input('country');
 
             if(!Country::isValid($queryParams)){
                 return $this->sendError('Invalid country', []);
             }
             
-            $completeQuery = $baseUrl . '?pais=' . $queryParams;
+            $completeQuery = "https://dev.kidopilabs.com.br/exercicio/covid.php" . '?pais=' . $queryParams;
             $response = Http::get($completeQuery);
+            
 
             if($response->ok()){
                 $this->apiCovidAccessLog->create(['country' => $queryParams]);
@@ -59,8 +59,7 @@ class CovidDataService
     public function covidCountry($queryParams):array 
     {
         try {
-            $baseUrl = env("Base_URL");
-            $completeQuery = $baseUrl . '?pais=' . $queryParams;
+            $completeQuery = "https://dev.kidopilabs.com.br/exercicio/covid.php" . '?pais=' . $queryParams;
             $response = Http::get($completeQuery);
 
             if($response->ok() && $response->json() != []){
